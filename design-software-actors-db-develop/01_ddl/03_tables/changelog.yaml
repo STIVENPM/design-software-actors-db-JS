@@ -106,3 +106,12 @@ databaseChangeLog:
             path: ../../05_rollbacks/01_ddl/03_tables/006_create_iam_processed_event.rollback.sql
             relativeToChangelogFile: true
             stripComments: false
+  - changeSet:
+      id: r1-actors-outbox-001
+      author: jose-stiven-perdomo
+      labels: "R1,ddl,outbox"
+      comment: Persists actor domain events atomically before delivery to Kafka.
+      changes:
+        - sqlFile: {path: 008_create_actors_outbox.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sqlFile: {path: ../../05_rollbacks/01_ddl/03_tables/008_create_actors_outbox.rollback.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
