@@ -17,3 +17,12 @@ databaseChangeLog:
         - sqlFile: {path: 002_grants_iam_processed_event.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
       rollback:
         - sqlFile: {path: ../../05_rollbacks/03_dcl/01_grants/002_grants_iam_processed_event.rollback.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+  - changeSet:
+      id: r1-actors-outbox-grants-001
+      author: jose-stiven-perdomo
+      labels: "R1,dcl,outbox"
+      comment: Least privilege for actor outbox writer and dispatcher.
+      changes:
+        - sqlFile: {path: 003_grants_actors_outbox.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sqlFile: {path: ../../05_rollbacks/03_dcl/01_grants/003_grants_actors_outbox.rollback.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
