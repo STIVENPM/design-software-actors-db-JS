@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: hu-act-019-seed-learner-ficha-006
+      author: codex
+      labels: "seed,test,hu-act-019,hu-iam-017"
+      comment: Local integration learner and active ficha fixture
+      changes:
+        - sqlFile: {path: 006_seed_hu_act_019_learner_ficha.sql, relativeToChangelogFile: true, splitStatements: false, stripComments: false}
+      rollback:
+        - sqlFile: {path: ../../05_rollbacks/02_dml/00_inserts/006_seed_hu_act_019_learner_ficha.rollback.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}

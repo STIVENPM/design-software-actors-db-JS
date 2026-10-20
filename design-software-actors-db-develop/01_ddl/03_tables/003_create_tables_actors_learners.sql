@@ -1,0 +1,42 @@
+CREATE TABLE IF NOT EXISTS actors_learners.learner (
+    id UUID NOT NULL,
+    user_id UUID NOT NULL,
+    document_type VARCHAR(2) NOT NULL,
+    document_number VARCHAR(20) NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    birth_date DATE,
+    is_active BOOLEAN NOT NULL DEFAULT true,
+    created_at TIMESTAMPTZ NOT NULL,
+    created_by UUID NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL,
+    updated_by UUID NOT NULL,
+    deleted_at TIMESTAMPTZ,
+    deleted_by UUID,
+    row_version INT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_learner_document_type CHECK (document_type IN ('CC','CE','RC','TI'))
+);
+
+CREATE TABLE IF NOT EXISTS actors_learners.learner_ficha_enrollment (
+    id UUID NOT NULL,
+    learner_id UUID NOT NULL,
+    ficha_id UUID NOT NULL,
+    enrollment_status_id UUID NOT NULL,
+    stage VARCHAR(12) NOT NULL,
+    enrollment_date DATE NOT NULL,
+    completion_date DATE,
+    is_current BOOLEAN NOT NULL DEFAULT false,
+    transfer_reason TEXT,
+    created_at TIMESTAMPTZ NOT NULL,
+    created_by UUID NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL,
+    updated_by UUID NOT NULL,
+    deleted_at TIMESTAMPTZ,
+    deleted_by UUID,
+    is_active BOOLEAN NOT NULL DEFAULT true,
+    row_version INT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_learner_ficha_enrollment_stage CHECK (stage IN ('INDUCTION','LECTURE','PRODUCTIVE')),
+    CONSTRAINT ck_learner_ficha_enrollment_dates CHECK (completion_date IS NULL OR completion_date >= enrollment_date)
+);

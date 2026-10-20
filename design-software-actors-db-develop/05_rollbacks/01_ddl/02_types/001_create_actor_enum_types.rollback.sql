@@ -1,0 +1,1 @@
+-- Intentionally empty. No PostgreSQL ENUM types are created by actors-service.

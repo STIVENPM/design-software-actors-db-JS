@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6a415bca-3324-4b09-9952-43bc75f73b5c
+      author: joseamaya009
+      labels: "HU-07-dev,ddl,base,extensions"
+      comment: Enables the uuid-ossp extension for actors UUID values.
+      changes:
+        - sqlFile:
+            path: 001_enable_uuid_extension.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/00_extensions/001_enable_uuid_extension.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false

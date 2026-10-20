@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9c2e5030-7e7f-4bbf-bb6d-6f0ce8c74338
+      author: joseale879
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the actors parameterization schema for business status catalogs.
+      changes:
+        - sqlFile:
+            path: 001_create_schema_actors_parameterization.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/001_create_schema_actors_parameterization.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: 94878963-6f18-4866-bc70-5f12524a26a7
+      author: joseale879
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the actors instructors schema.
+      changes:
+        - sqlFile:
+            path: 002_create_schema_actors_instructors.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/002_create_schema_actors_instructors.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: 5fdbd3b1-3403-4d47-9b97-3e68538d4dd6
+      author: joseale879
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the actors learners schema.
+      changes:
+        - sqlFile:
+            path: 003_create_schema_actors_learners.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/003_create_schema_actors_learners.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: e59c7a2b-1918-4101-b762-701139215a9a
+      author: joseale879
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the actors companies schema.
+      changes:
+        - sqlFile:
+            path: 004_create_schema_actors_companies.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/004_create_schema_actors_companies.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: d3ca13aa-9cc8-4ffa-820c-2acb3c2691ce0
+      author: joseale879
+      labels: "HU-03-dev,ddl,base,schemas"
+      comment: Creates the actors tracking schema.
+      changes:
+        - sqlFile:
+            path: 005_create_schema_actors_tracking.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/01_schemas/005_create_schema_actors_tracking.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false

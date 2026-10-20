@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9a6b3b2e-0c14-45ad-8067-cd885b703f96
+      author: EmersonMolano
+      labels: "HU-05-dev,ddl,base,indexes"
+      comment: Creates indexes for actors domain tables to improve lookups and reporting performance.
+      changes:
+        - sqlFile:
+            path: 001_create_indexes_actors.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/001_create_indexes_actors.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false

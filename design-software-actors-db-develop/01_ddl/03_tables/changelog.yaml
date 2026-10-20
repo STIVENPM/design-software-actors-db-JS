@@ -1,0 +1,108 @@
+databaseChangeLog:
+  - changeSet:
+      id: hu-act-019-parameterization-catalog-007
+      author: codex
+      labels: "ddl,compatibility,hu-act-019"
+      comment: Creates the catalog tables required by the Actors JPA mappings
+      changes:
+        - sqlFile:
+            path: 007_create_tables_parameterization_catalog.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/007_create_tables_parameterization_catalog.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: false
+  - changeSet:
+      id: 7d906823-0d7e-4b38-af7c-6d4be09ce61c
+      author: joseale879
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates the actors parameterization domain tables.
+      changes:
+        - sqlFile:
+            path: 001_create_tables_actors_parameterization.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/001_create_tables_actors_parameterization.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: 96f1115b-c3e2-46dc-9c72-c8f48ad8040c
+      author: joseale879
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates the actors instructors domain tables.
+      changes:
+        - sqlFile:
+            path: 002_create_tables_actors_instructors.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/002_create_tables_actors_instructors.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: b3516fd2-75fa-414f-8dcc-8ea63e5ff77d
+      author: joseale879
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates the actors learners domain tables.
+      changes:
+        - sqlFile:
+            path: 003_create_tables_actors_learners.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/003_create_tables_actors_learners.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: 4d29fa28-df22-409d-bde9-315aa5556d5e
+      author: joseale879
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates the actors companies domain tables.
+      changes:
+        - sqlFile:
+            path: 004_create_tables_actors_companies.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/004_create_tables_actors_companies.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: e883aeb7-bf79-4f9e-ae57-e46eaa6c66b9
+      author: joseale879
+      labels: "HU-04-dev,ddl,base,tables"
+      comment: Creates the actors tracking domain tables.
+      changes:
+        - sqlFile:
+            path: 005_create_tables_actors_tracking.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/005_create_tables_actors_tracking.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+  - changeSet:
+      id: hu-act-013-iam-processed-event-001
+      author: qa-architecture
+      labels: "HU-13-dev,ddl,events,idempotency"
+      comment: Creates IAM processed event inbox for actors-service idempotent consumption.
+      changes:
+        - sqlFile:
+            path: 006_create_iam_processed_event.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/006_create_iam_processed_event.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false

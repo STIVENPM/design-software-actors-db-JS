@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: hu-act-019-align-company-visit-number-type-008
+      author: codex
+      labels: "ddl,compatibility,hu-act-019"
+      comment: Align company_visit.visit_number with the Actors JPA Integer mapping
+      changes:
+        - sqlFile: {path: 008_align_company_visit_number_type.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sqlFile: {path: ../../05_rollbacks/01_ddl/04_alter/008_align_company_visit_number_type.rollback.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+  - changeSet:
+      id: hu-act-019-add-company-visit-first-visit-late-007
+      author: codex
+      labels: "ddl,compatibility,hu-act-019"
+      comment: Align company_visit schema with the Actors persistence model
+      changes:
+        - sqlFile: {path: 007_add_company_visit_first_visit_late.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sqlFile: {path: ../../05_rollbacks/01_ddl/04_alter/007_add_company_visit_first_visit_late.rollback.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+  - changeSet:
+      id: ensure-status-category-primary-key-001
+      author: codex
+      labels: "ddl,idempotency,hu-act-019"
+      comment: Ensure the status category primary key exists without duplicating an existing DDL key
+      changes:
+        - sqlFile:
+            path: 002_ensure_status_category_pk.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+      rollback:
+        - sql: {sql: "ALTER TABLE actors_parameterization.status_category DROP CONSTRAINT IF EXISTS pk_status_category;"}
+  - changeSet:
+      id: 1a45a52f-3dfc-4d5f-8c0d-e0584c74c927
+      author: joseamaya009
+      labels: "HU-07-dev,ddl,base,alter,constraints"
+      comment: Adds actors primary keys, unique constraints, and foreign keys.
+      changes:
+        - sqlFile:
+            path: 001_create_constraints_actors.sql
+            relativeToChangelogFile: true
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/04_alter/001_create_constraints_actors.rollback.sql
+            relativeToChangelogFile: true
+            stripComments: false
+
+  - changeSet:
+      id: quality-fixes-actors-950
+      author: jesus-gonzalez
+      labels: "quality,v2"
+      comment: id DEFAULT gen_random_uuid e indices de FK faltantes
+      changes:
+        - sqlFile: {path: 950_quality_fixes.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sql: {sql: "SELECT 1;"}
+  - changeSet:
+      id: quality-polish-actors-951
+      author: jesus-gonzalez
+      labels: "quality,v2,polish"
+      comment: Elimina columna transitiva status_transition.status_category_id (3NF)
+      changes:
+        - sqlFile: {path: 951_quality_polish.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sql: {sql: "ALTER TABLE actors_parameterization.status_transition ADD COLUMN status_category_id uuid;"}
+  - changeSet:
+      id: refinamiento-actors-exception-970
+      author: jesus-gonzalez
+      labels: "refinamiento,exception,v2"
+      comment: "Workflow de excepcion del instructor: status, support_document_id, reviewed_by/at, decision_reason"
+      changes:
+        - sqlFile: {path: 970_refinamiento_exception.sql, relativeToChangelogFile: true, splitStatements: true, stripComments: false}
+      rollback:
+        - sqlFile: {path: ../../05_rollbacks/01_ddl/04_alter/970_refinamiento_exception.rollback.sql, relativeToChangelogFile: true, stripComments: false}

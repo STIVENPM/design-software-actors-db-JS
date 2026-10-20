@@ -1,0 +1,1 @@
+DROP SCHEMA IF EXISTS actors_learners CASCADE;
